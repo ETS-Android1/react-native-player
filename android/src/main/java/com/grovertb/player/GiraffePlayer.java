@@ -34,6 +34,7 @@ import android.view.ViewParent;
 import android.widget.FrameLayout;
 import android.widget.MediaController;
 
+import com.facebook.react.bridge.Callback;
 import com.github.tcking.giraffeplayer2.R;
 
 import java.io.IOException;

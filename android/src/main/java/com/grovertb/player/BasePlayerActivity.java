@@ -4,6 +4,8 @@ import android.content.res.Configuration;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.facebook.react.bridge.Callback;
+
 /**
  * Created by tcking on 2017
  */

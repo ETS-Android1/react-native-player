@@ -7,11 +7,11 @@ import android.os.Parcelable;
 
 import androidx.annotation.ColorInt;
 
+import com.facebook.react.bridge.Callback;
+
 import java.util.Collection;
 import java.util.HashSet;
 
-import com.grovertb.player.Option;
-import com.grovertb.player.PlayerManager;
 
 /**
  * Created by tcking on 2017
@@ -43,7 +43,7 @@ public class VideoInfo implements Parcelable {
     private String lastFingerprint;
     private Uri lastUri;
     private int retryInterval=0;
-    private int bgColor = Color.DKGRAY;
+    private int bgColor = Color.parseColor("#111111");
     private String playerImpl = PLAYER_IMPL_IJK;
     private boolean fullScreenAnimation = true;
     private boolean looping = false;
@@ -69,7 +69,6 @@ public class VideoInfo implements Parcelable {
         looping = defaultVideoInfo.looping;
         currentVideoAsCover = defaultVideoInfo.currentVideoAsCover;
         fullScreenOnly = defaultVideoInfo.fullScreenOnly;
-
     }
 
     public boolean isFullScreenOnly() {
@@ -146,7 +145,7 @@ public class VideoInfo implements Parcelable {
 
     /**
      * add player init option
-     * @param option option
+     * @param options option
      * @return VideoInfo
      */
     public VideoInfo addOptions(Collection<com.grovertb.player.Option> options) {
@@ -167,6 +166,7 @@ public class VideoInfo implements Parcelable {
         this.showTopBar = showTopBar;
         return this;
     }
+
 
     public boolean isPortraitWhenFullScreen() {
         return portraitWhenFullScreen;
@@ -233,7 +233,6 @@ public class VideoInfo implements Parcelable {
         looping = in.readByte() != 0;
         currentVideoAsCover = in.readByte() != 0;
         fullScreenOnly = in.readByte() != 0;
-
     }
 
     public static final Creator<VideoInfo> CREATOR = new Creator<VideoInfo>() {

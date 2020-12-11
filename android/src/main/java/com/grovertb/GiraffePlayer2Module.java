@@ -2,14 +2,17 @@ package com.grovertb;
 
 import android.net.Uri;
 
+import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
+import com.grovertb.player.PlayerGlobal;
 import com.grovertb.player.GiraffePlayer;
 import com.grovertb.player.VideoInfo;
 
 import java.util.HashMap;
 import java.util.Map;
+
 
 
 public class GiraffePlayer2Module extends ReactContextBaseJavaModule {
@@ -20,7 +23,6 @@ public class GiraffePlayer2Module extends ReactContextBaseJavaModule {
     public GiraffePlayer2Module(ReactApplicationContext reactContext) {
         super(reactContext);
         this.reactContext = reactContext;
-
         videoInfo = new VideoInfo();
     }
 
@@ -63,6 +65,12 @@ public class GiraffePlayer2Module extends ReactContextBaseJavaModule {
     @ReactMethod
     public void setShowTopBar(Boolean isShowTopBar) {
         videoInfo.setShowTopBar(isShowTopBar);
+    }
+
+    @ReactMethod
+    public void onClose(Callback callback) {
+        PlayerGlobal playerGlobal = new PlayerGlobal();
+        playerGlobal.setCallbackFNC(callback);
     }
 
 

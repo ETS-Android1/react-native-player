@@ -1,6 +1,7 @@
 package com.grovertb.player;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Application;
 import android.content.Context;
 import android.content.res.Configuration;
@@ -12,6 +13,7 @@ import java.util.Map;
 import java.util.WeakHashMap;
 import java.util.concurrent.ConcurrentHashMap;
 
+import com.facebook.react.bridge.Callback;
 import com.grovertb.player.DefaultMediaController;
 import com.grovertb.player.GiraffePlayer;
 import com.grovertb.player.MediaController;

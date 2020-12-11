@@ -20,14 +20,11 @@ import android.widget.SeekBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
-import com.github.tcking.giraffeplayer2.R;
+import com.facebook.react.bridge.Callback;
 
 import java.util.Locale;
 
-import com.grovertb.player.BaseMediaController;
-import com.grovertb.player.GiraffePlayer;
-import com.grovertb.player.ScalableTextureView;
-import com.grovertb.player.VideoInfo;
+import com.grovertb.R;
 import com.grovertb.player.trackselector.TrackSelectorFragment;
 import tv.danmaku.ijk.media.player.IMediaPlayer;
 import tv.danmaku.ijk.media.player.IjkTimedText;
@@ -247,7 +244,14 @@ public class DefaultMediaController extends BaseMediaController {
 //                videoView.start();
 //                doPauseResume();
             } else if (v.getId() == R.id.app_video_finish) {
+
                 if (!player.onBackPressed()) {
+                    com.grovertb.player.VideoInfo videoInfo = videoView.getVideoInfo();
+                    PlayerGlobal playerGlobal = new PlayerGlobal();
+                    Callback callbackOnClose = playerGlobal.getCallbackFNC();
+                    if (callbackOnClose != null) {
+                        callbackOnClose.invoke();
+                    }
                     ((Activity) videoView.getContext()).finish();
                 }
             } else if (v.getId() == R.id.app_video_float_close) {
