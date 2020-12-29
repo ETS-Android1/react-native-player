@@ -33,15 +33,18 @@ import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.widget.FrameLayout;
 import android.widget.MediaController;
+import android.widget.Toast;
 
 import com.facebook.react.bridge.Callback;
 import com.github.tcking.giraffeplayer2.R;
 
 import java.io.IOException;
 import java.lang.ref.WeakReference;
+import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.google.gson.Gson;
 import com.grovertb.player.LazyLoadManager;
 import com.grovertb.player.Option;
 import com.grovertb.player.PlayerActivity;
@@ -53,6 +56,10 @@ import com.grovertb.player.ScalableTextureView;
 import com.grovertb.player.UIHelper;
 import com.grovertb.player.VideoInfo;
 import com.grovertb.player.VideoView;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import tv.danmaku.ijk.media.player.AndroidMediaPlayer;
 import tv.danmaku.ijk.media.player.IMediaPlayer;
 import tv.danmaku.ijk.media.player.IjkMediaPlayer;
@@ -63,7 +70,6 @@ import tv.danmaku.ijk.media.player.misc.ITrackInfo;
 /**
  * Created by tcking on 2017
  */
-
 public class GiraffePlayer implements MediaController.MediaPlayerControl {
     public static final String TAG = "GiraffePlayer";
     public static final String ACTION = "com.grovertb.player.action";
@@ -432,9 +438,30 @@ public class GiraffePlayer implements MediaController.MediaPlayerControl {
         }
         try {
             uri = videoInfo.getUri();
-            mediaPlayer.setDataSource(context, uri, headers);
-            currentState(STATE_PREPARING);
-            mediaPlayer.prepareAsync();
+            String _headers = videoInfo.getHeaders();
+
+            try {
+                JSONObject obj = new JSONObject(_headers);
+                Map<String, String> newHeaders = new HashMap<String, String>();
+                newHeaders.put("Access-Token", obj.getString("Access-Token"));
+                newHeaders.put("Client-Key", obj.getString("Client-Key"));
+
+                mediaPlayer.setDataSource(context, uri, newHeaders);
+                currentState(STATE_PREPARING);
+                mediaPlayer.prepareAsync();
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+
+//            Map<String, String> newHeaders = new HashMap<String, String>();
+//            newHeaders.put("Access-Token", "66373.79.DXHQX9Z2P7RCVWQA43GHYE3YFMHM3UHR.f577b980bb7aff97fd15232caad68b18");
+//            newHeaders.put("Client-Key", "YVLH48ZYDWVRGGSMRPCB34QSYGAH6U8U");
+//
+//            mediaPlayer.setDataSource(context, uri, newHeaders);
+//            currentState(STATE_PREPARING);
+//            mediaPlayer.prepareAsync();
         } catch (IOException e) {
             currentState(STATE_ERROR);
             e.printStackTrace();

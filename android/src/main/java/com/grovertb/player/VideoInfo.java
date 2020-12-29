@@ -10,7 +10,9 @@ import androidx.annotation.ColorInt;
 import com.facebook.react.bridge.Callback;
 
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 
 
 /**
@@ -49,6 +51,8 @@ public class VideoInfo implements Parcelable {
     private boolean looping = false;
     private boolean currentVideoAsCover = true;
     private boolean fullScreenOnly = false;
+    private String headers = "";
+
 
     public VideoInfo(VideoInfo defaultVideoInfo) {
         title = defaultVideoInfo.title;
@@ -69,6 +73,7 @@ public class VideoInfo implements Parcelable {
         looping = defaultVideoInfo.looping;
         currentVideoAsCover = defaultVideoInfo.currentVideoAsCover;
         fullScreenOnly = defaultVideoInfo.fullScreenOnly;
+        headers = defaultVideoInfo.headers;
     }
 
     public boolean isFullScreenOnly() {
@@ -196,6 +201,15 @@ public class VideoInfo implements Parcelable {
         return this;
     }
 
+    public VideoInfo setHeaders(String _headers) {
+        this.headers = _headers;
+        return this;
+    }
+
+    public String getHeaders() {
+        return this.headers;
+    }
+
     public int getAspectRatio() {
         return aspectRatio;
     }
@@ -233,6 +247,7 @@ public class VideoInfo implements Parcelable {
         looping = in.readByte() != 0;
         currentVideoAsCover = in.readByte() != 0;
         fullScreenOnly = in.readByte() != 0;
+        headers = in.readString();
     }
 
     public static final Creator<VideoInfo> CREATOR = new Creator<VideoInfo>() {
@@ -311,6 +326,7 @@ public class VideoInfo implements Parcelable {
         dest.writeByte((byte) (looping ? 1 : 0));
         dest.writeByte((byte) (currentVideoAsCover ? 1 : 0));
         dest.writeByte((byte) (fullScreenOnly ? 1 : 0));
+        dest.writeString(headers);
     }
 
     public static VideoInfo createFromDefault(){

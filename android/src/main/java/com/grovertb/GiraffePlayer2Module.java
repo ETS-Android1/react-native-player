@@ -6,6 +6,8 @@ import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
+import com.facebook.react.bridge.ReadableArray;
+import com.facebook.react.bridge.ReadableMap;
 import com.grovertb.player.PlayerGlobal;
 import com.grovertb.player.GiraffePlayer;
 import com.grovertb.player.VideoInfo;
@@ -46,6 +48,7 @@ public class GiraffePlayer2Module extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void play(String url) {
+//        videoInfo.setHeaders("{\"Access-Token\":\"66373.79.DXHQX9Z2P7RCVWQA43GHYE3YFMHM3UHR.f577b980bb7aff97fd15232caad68b18\", \"Client-Key\":\"YVLH48ZYDWVRGGSMRPCB34QSYGAH6U8U\"}");
         GiraffePlayer.play(reactContext, videoInfo.setUri(Uri.parse(url)));
     }
 
@@ -53,6 +56,14 @@ public class GiraffePlayer2Module extends ReactContextBaseJavaModule {
     @ReactMethod
     public void setTitle(String title) {
         videoInfo.setTitle(title);
+    }
+
+    @ReactMethod
+    public void setHeaders(String headers) {
+//        HashMap<String, String> newHeaders = new HashMap<String, String>();
+//        newHeaders.put("Access-Token", "66373.79.DXHQX9Z2P7RCVWQA43GHYE3YFMHM3UHR.f577b980bb7aff97fd15232caad68b18");
+//        newHeaders.put("Client-Key", "YVLH48ZYDWVRGGSMRPCB34QSYGAH6U8U");
+        videoInfo.setHeaders(headers);
     }
 
 
