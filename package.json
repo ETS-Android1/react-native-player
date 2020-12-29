@@ -1,7 +1,7 @@
 {
-  "name": "react-native-giraffeplayer2",
-  "title": "React Native GiraffePlayer2",
-  "version": "0.0.3",
+  "name": "react-native-player",
+  "title": "React Native Player m3u8",
+  "version": "0.0.4",
   "description": "Player",
   "main": "index.js",
   "scripts": {
@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/grovertb/react-native-giraffeplayer2.git",
-    "baseUrl": "https://github.com/grovertb/react-native-giraffeplayer2"
+    "url": "git+https://github.com/decisionnguyen/react-native-player.git",
+    "baseUrl": "https://github.com/decisionnguyen/react-native-player"
   },
   "keywords": [
     "react-native"
   ],
   "author": {
-    "name": "Grover TB",
-    "email": "grover.jtb@gmail.com"
+    "name": "Dinh Quyet",
+    "email": "decisionnguyen@gmail.com"
   },
   "license": "MIT",
   "licenseFilename": "LICENSE",

@@ -6,6 +6,6 @@ declare const GPlayer: {
   setFullScreenOnly?: (isFullScreenOnly :boolean) => void;
   setShowTopBar?: (isShowTopbar: boolean) => void;
   setAspectRatio?: (aspectRatio: AspectRatio) => void;
-}
+};
 
 export default GPlayer;
