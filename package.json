@@ -1,7 +1,7 @@
 {
   "name": "react-native-player",
   "title": "React Native Player m3u8",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Player",
   "main": "index.js",
   "scripts": {
