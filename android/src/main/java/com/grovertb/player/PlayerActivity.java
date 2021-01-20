@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 
+import com.facebook.react.bridge.Callback;
 import com.grovertb.R;
 
 
@@ -37,6 +38,15 @@ public class PlayerActivity extends BasePlayerActivity {
         videoView.videoInfo(videoInfo);
         PlayerManager.getInstance().getPlayer(videoView).start();
     }
-
+    
+    @Override
+    public void onBackPressed() {
+        PlayerGlobal playerGlobal = new PlayerGlobal();
+        Callback callbackOnClose = playerGlobal.getCallbackFNC();
+        if (callbackOnClose != null) {
+            callbackOnClose.invoke();
+        }
+        super.onBackPressed();
+    }
 
 }
