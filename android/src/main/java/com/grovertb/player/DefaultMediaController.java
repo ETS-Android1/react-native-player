@@ -243,7 +243,7 @@ public class DefaultMediaController extends BaseMediaController {
 //                videoView.seekTo(0);
 //                videoView.start();
 //                doPauseResume();
-            } else if (v.getId() == R.id.app_video_finish) {
+            } else if (v.getId() == R.id.app_video_finish || v.getId() == R.id.app_video_title) {
 
                 if (!player.onBackPressed()) {
                     com.grovertb.player.VideoInfo videoInfo = videoView.getVideoInfo();
@@ -282,6 +282,7 @@ public class DefaultMediaController extends BaseMediaController {
         $.id(R.id.app_video_play).clicked(onClickListener).imageView().setRotation(isRtl()?180:0);
         $.id(R.id.app_video_fullscreen).clicked(onClickListener);
         $.id(R.id.app_video_finish).clicked(onClickListener).imageView().setRotation(isRtl()?180:0);
+        $.id(R.id.app_video_title).clicked(onClickListener);
         $.id(R.id.app_video_replay_icon).clicked(onClickListener).imageView().setRotation(isRtl()?180:0);
         $.id(R.id.app_video_clarity).clicked(onClickListener);
         $.id(R.id.app_video_float_close).clicked(onClickListener);
