@@ -41,12 +41,16 @@ public class PlayerActivity extends BasePlayerActivity {
     
     @Override
     public void onBackPressed() {
-        PlayerGlobal playerGlobal = new PlayerGlobal();
-        Callback callbackOnClose = playerGlobal.getCallbackFNC();
-        if (callbackOnClose != null) {
-            callbackOnClose.invoke();
+        try {
+            PlayerGlobal playerGlobal = new PlayerGlobal();
+            Callback callbackOnClose = playerGlobal.getCallbackFNC();
+            if (callbackOnClose != null) {
+                callbackOnClose.invoke();
+            }
+            super.onBackPressed();
+        } catch (Exception e) {
+
         }
-        super.onBackPressed();
     }
 
 }
