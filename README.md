@@ -3,6 +3,12 @@
 > Video Player based on [GiraffePlayer2](https://github.com/tcking/GiraffePlayer2) for react-native
 
 *Only Android support now.*
+For Android 11:
+<application 
+             ....
+             android:allowNativeHeapPointerTagging="false">
+</application>
+add this into AndroidManifest.xml
 
 ## Getting started
 
