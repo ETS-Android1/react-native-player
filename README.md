@@ -4,10 +4,13 @@
 
 *Only Android support now.*
 For Android 11:
+
+`
 <application 
              ....
              android:allowNativeHeapPointerTagging="false">
 </application>
+`
 add this into AndroidManifest.xml
 
 ## Getting started
